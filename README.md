@@ -1,3 +1,11 @@
+##
+
+Resource
+
+[1] <https://www.mongodb.com/presentations/building-web-apps-mern-stack-google-cloud-platform)>
+[2] <https://www.mongodb.com/presentations/part-two-building-web-apps-with-mern-stack-and-google-cloud-platform>
+[3] <https://www.mongodb.com/presentations/part-three-building-web-apps-with-the-mern-stack-and-google-cloud-platform>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
