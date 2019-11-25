@@ -1,12 +1,13 @@
-import React from 'react';
-//import { Link } from 'react-router-dom';
+import React from 'react'
+import { ErrorMessage } from './errors'
+//import { Link } from 'react-router-dom'
 
 export function list() {
   return (
     <div>
       <p>You are on the Users List component!</p>
     </div>
-  );
+  )
 }
 
 export function create() {
@@ -23,12 +24,13 @@ export function create() {
             onChange={this.onChangeUsername}
           />
         </div>
+        <ErrorMessage isError={this.state.isError} errorMessage={this.state.errorMessage} />
         <div className="form-group">
           <input type="submit" value="Create Exercise Log" className="btn" />
         </div>
       </form>
     </div>
-  );
+  )
 }
 
 export function edit() {
@@ -36,5 +38,5 @@ export function edit() {
     <div>
       <p>You are on the User Edit component!</p>
     </div>
-  );
+  )
 }

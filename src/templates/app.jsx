@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Navbar from "../components/navbar.component"
 import ExerciseList from "../components/exercises-list.component"
@@ -20,5 +20,6 @@ const template = () => {
       </div>
     </Router>
   )
-};
+}
+
 export default template;

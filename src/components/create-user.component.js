@@ -1,5 +1,6 @@
-import { Component } from 'react';
-import { create } from '../templates/users';
+import { Component } from 'react'
+import axios from 'axios'
+import { create } from '../templates/users'
 
 export default class UserCreate extends Component {
 
@@ -8,6 +9,8 @@ export default class UserCreate extends Component {
     
     this.state = {
       username: '',
+      isError: false,
+      errorMessage: ''
     }
 
     this.onChangeUsername = this.onChangeUsername.bind(this)
@@ -21,25 +24,44 @@ export default class UserCreate extends Component {
 
   onChangeUsername(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
+      isError: false
     })
   }
 
   onSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
+
+    this.setState({
+      isError: false,
+      errorMessage: ''
+    })
     
     const user = {
       username: this.state.username,
     }
 
-    console.log(user)
-
-    this.setState({
-      username: ''
-    });
+    axios.post('http://localhost:5000/users/add', user)
+      .then((res) => {
+        if (res.data && res.data._id) {
+          this.setState({
+            username: '',
+            isError: false,
+            errorMessage: ''
+          })
+        } else {
+          throw new Error('Not saved due to error')
+        }
+      })
+      .catch((err) => {
+        this.setState({
+          isError: true,
+          errorMessage: err.message || 'No response'
+        })
+      })
   }
 
   render() {
-    return create.call(this); 
+    return create.call(this)
   };
 }

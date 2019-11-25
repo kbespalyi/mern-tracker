@@ -3,7 +3,7 @@ const Exercise = require('../models/exercise.model')
 
 router.route('/').get((req, res) => {
   Exercise.find()
-  .then(exercises => res.json(exercises))
+  .then((exercises) => res.json(exercises))
   .catch(err => res.status(400).json('Error: ' + err))
 })
 
@@ -21,20 +21,20 @@ router.route('/add').post((req, res) => {
   })
 
   newExercise.save()
-  .then(() => res.json('Exercise added!'))
+  .then((exercise) => res.json(exercise))
   .catch(err => res.status(400).json('Error: ' + err))
 })
 
 router.route('/:id').get((req, res) => {
   Exercise.findById(req.params.id)
-  .then(exercise => res.json(exercise))
-  .catch(err => res.status(400).json('Error: ' + err))
+  .then((exercise) => res.json(exercise))
+  .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 router.route('/:id').delete((req, res) => {
   Exercise.findByIdAndDelete(req.params.id)
-  .then(() => res.json('Exercise deleted.'))
-  .catch(err => res.status(400).json('Error: ' + err))
+  .then(() => res.json('OK'))
+  .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 router.route('/:id').put((req, res) => {
@@ -46,7 +46,7 @@ router.route('/:id').put((req, res) => {
     exercise.date = Date.parse(req.body.date)
     return exercise.save()
   })
-  .then(() => res.json('Exercise updated.'))
+  .then((exercise) => res.json(exercise))
   .catch(err => res.status(400).json('Error: ' + err))
 })
 
